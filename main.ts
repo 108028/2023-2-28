@@ -5,7 +5,6 @@ function Aa () {
 function 得分2 () {
     game.addScore(1)
     led.stopAnimation()
-    basic.pause(1100)
     得分4()
 }
 input.onButtonPressed(Button.A, function () {
@@ -21,7 +20,7 @@ function Turn () {
     b4.turn(Direction.Right, 90)
 }
 function 得分 () {
-    if (_0Y4.length != 0 && (_1y4.length != 0 && _2y4.length != 0) && (_3y4.length != 0 && _4y4.length != 0)) {
+    if (_0Y4.length > 0 && (_1y4.length > 0 && _2y4.length > 0) && (_3y4.length > 0 && _4y4.length > 0)) {
         得分2()
     }
 }
@@ -48,13 +47,13 @@ function 得分4 () {
     b2.move(1)
     b3.move(1)
     b4.move(1)
-    while (_0Y4.length != 0 && (_1y4.length != 0 && _2y4.length != 0) && (_3y4.length != 0 && _4y4.length != 0)) {
-        _0Y4.pop()
-        _1y4.pop()
-        _2y4.pop()
-        _3y4.pop()
-        _4y4.pop()
+    while (_0Y4.length > 0 && (_1y4.length > 0 && _2y4.length > 0) && (_3y4.length > 0 && _4y4.length > 0)) {
         隨便 += -10
+        _0Y4.pop().delete()
+        _1y4.pop().delete()
+        _2y4.pop().delete()
+        _3y4.pop().delete()
+        _4y4.pop().delete()
     }
     list = 0
     Light()
