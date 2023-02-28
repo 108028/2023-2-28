@@ -1,6 +1,8 @@
 function Aa () {
+    pins.digitalWritePin(DigitalPin.P0, 1)
     方塊 = game.createSprite(2, 0)
     方塊.turn(Direction.Right, 90)
+    pins.digitalWritePin(DigitalPin.P0, 0)
 }
 function 得分2 () {
     game.addScore(1)
@@ -8,9 +10,12 @@ function 得分2 () {
     得分4()
 }
 input.onButtonPressed(Button.A, function () {
+    pins.digitalWritePin(DigitalPin.P2, 1)
     方塊.turn(Direction.Right, 90)
     方塊.move(1)
     方塊.turn(Direction.Left, 90)
+    basic.pause(100)
+    pins.digitalWritePin(DigitalPin.P2, 0)
 })
 function Turn () {
     b0.turn(Direction.Right, 90)
@@ -37,9 +42,12 @@ input.onButtonPressed(Button.AB, function () {
     game.resume()
 })
 input.onButtonPressed(Button.B, function () {
+    pins.digitalWritePin(DigitalPin.P2, 1)
     方塊.turn(Direction.Left, 90)
     方塊.move(1)
     方塊.turn(Direction.Right, 90)
+    basic.pause(100)
+    pins.digitalWritePin(DigitalPin.P2, 0)
 })
 function 得分4 () {
     b0.move(1)
@@ -58,7 +66,15 @@ function 得分4 () {
     list = 0
     Light()
 }
+input.onGesture(Gesture.EightG, function () {
+    game.pause()
+    pins.digitalWritePin(DigitalPin.P0, 1)
+    for (let index = 0; index < 1e+46; index++) {
+        basic.showNumber(game.score())
+    }
+})
 function _1 () {
+    pins.digitalWritePin(DigitalPin.P1, 0)
     while (!(方塊.isTouching(b0) || (方塊.isTouching(b1) || 方塊.isTouching(b2)) || (方塊.isTouching(b3) || 方塊.isTouching(b4)))) {
         方塊.move(1)
         basic.pause(隨便)
@@ -79,6 +95,8 @@ function _1 () {
         b4.move(-1)
         _4y4.push(方塊)
     }
+    pins.digitalWritePin(DigitalPin.P1, 1)
+    basic.pause(1000)
 }
 let list = 0
 let _4y4: game.LedSprite[] = []
@@ -93,7 +111,6 @@ let b3: game.LedSprite = null
 let b2: game.LedSprite = null
 let b1: game.LedSprite = null
 let b0: game.LedSprite = null
-led.enable(true)
 Aa()
 b0 = game.createSprite(0, 4)
 b1 = game.createSprite(1, 4)
@@ -103,6 +120,9 @@ b4 = game.createSprite(4, 4)
 Light()
 Turn()
 隨便 = 1000
+pins.digitalWritePin(DigitalPin.P0, 1)
+basic.pause(1000)
+pins.digitalWritePin(DigitalPin.P0, 0)
 basic.forever(function () {
     _1()
     得分()
