@@ -54,6 +54,7 @@ function 得分4 () {
         _2y4.pop()
         _3y4.pop()
         _4y4.pop()
+        隨便 += -10
     }
     list = 0
     Light()
@@ -61,7 +62,7 @@ function 得分4 () {
 function _1 () {
     while (!(方塊.isTouching(b0) || (方塊.isTouching(b1) || 方塊.isTouching(b2)) || (方塊.isTouching(b3) || 方塊.isTouching(b4)))) {
         方塊.move(1)
-        basic.pause(900)
+        basic.pause(隨便)
     }
     if (方塊.isTouching(b0)) {
         b0.move(-1)
@@ -87,6 +88,7 @@ let _2y4: game.LedSprite[] = []
 let _1y4: game.LedSprite[] = []
 let _0Y4: game.LedSprite[] = []
 let 方塊: game.LedSprite = null
+let 隨便 = 0
 let b4: game.LedSprite = null
 let b3: game.LedSprite = null
 let b2: game.LedSprite = null
@@ -101,6 +103,7 @@ b3 = game.createSprite(3, 4)
 b4 = game.createSprite(4, 4)
 Light()
 Turn()
+隨便 = 1000
 basic.forever(function () {
     _1()
     得分()
