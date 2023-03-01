@@ -1,3 +1,8 @@
+input.onButtonPressed(Button.AB, function () {
+    game.pause()
+    basic.showNumber(game.score())
+    game.resume()
+})
 function Aa () {
     pins.digitalWritePin(DigitalPin.P2, 1)
     方塊 = game.createSprite(2, 0)
@@ -34,13 +39,20 @@ function 得分2 () {
     led.stopAnimation()
     得分4()
 }
-input.onButtonPressed(Button.A, function () {
+input.onButtonPressed(Button.B, function () {
     pins.digitalWritePin(DigitalPin.P2, 1)
-    方塊.turn(Direction.Right, 90)
-    方塊.move(1)
     方塊.turn(Direction.Left, 90)
+    方塊.move(1)
+    方塊.turn(Direction.Right, 90)
     basic.pause(100)
     pins.digitalWritePin(DigitalPin.P2, 0)
+})
+input.onGesture(Gesture.EightG, function () {
+    game.pause()
+    pins.digitalWritePin(DigitalPin.P2, 1)
+    for (let index = 0; index < 1e+46; index++) {
+        basic.showNumber(game.score())
+    }
 })
 function Turn () {
     b0.turn(Direction.Right, 90)
@@ -61,16 +73,11 @@ function Light () {
     b3.set(LedSpriteProperty.Brightness, 0)
     b4.set(LedSpriteProperty.Brightness, 0)
 }
-input.onButtonPressed(Button.AB, function () {
-    game.pause()
-    basic.showNumber(game.score())
-    game.resume()
-})
-input.onButtonPressed(Button.B, function () {
+input.onButtonPressed(Button.A, function () {
     pins.digitalWritePin(DigitalPin.P2, 1)
-    方塊.turn(Direction.Left, 90)
-    方塊.move(1)
     方塊.turn(Direction.Right, 90)
+    方塊.move(1)
+    方塊.turn(Direction.Left, 90)
     basic.pause(100)
     pins.digitalWritePin(DigitalPin.P2, 0)
 })
@@ -91,13 +98,6 @@ function 得分4 () {
     list = 0
     Light()
 }
-input.onGesture(Gesture.EightG, function () {
-    game.pause()
-    pins.digitalWritePin(DigitalPin.P2, 1)
-    for (let index = 0; index < 1e+46; index++) {
-        basic.showNumber(game.score())
-    }
-})
 let 無限 = 0
 let list = 0
 let _4y4: game.LedSprite[] = []
