@@ -98,6 +98,7 @@ input.onGesture(Gesture.EightG, function () {
         basic.showNumber(game.score())
     }
 })
+let 無限 = 0
 let list = 0
 let _4y4: game.LedSprite[] = []
 let _3y4: game.LedSprite[] = []
@@ -164,7 +165,12 @@ basic.forever(function () {
     Aa()
 })
 control.inBackground(function () {
-    music.playMelody("B F G A G F E - ", 120)
-    music.playMelody("E G B - A G F - ", 120)
-    music.playMelody("F A B C5 A F - F ", 120)
+    無限 = 1
+    for (let index = 0; index < 無限; index++) {
+        無限 += 1
+        music.playMelody("A - E F G - F E ", 120)
+        music.playMelody("D - D F A - G F ", 120)
+        music.playMelody("E - E F G - A - ", 120)
+        music.playMelody("F - D - D - - - ", 120)
+    }
 })
