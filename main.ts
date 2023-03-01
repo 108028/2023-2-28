@@ -125,6 +125,27 @@ basic.showLeds(`
     # # . . .
     # # . . .
     `)
+basic.showLeds(`
+    . . . # .
+    # . . . #
+    # . . . #
+    # . . . #
+    . # # # .
+    `)
+basic.showLeds(`
+    . . # # .
+    . . . . #
+    # . . . #
+    # . . . #
+    . # # # .
+    `)
+basic.showLeds(`
+    . # # # .
+    . . . . #
+    . . . . #
+    # . . . #
+    . # # # .
+    `)
 Aa()
 b0 = game.createSprite(0, 4)
 b1 = game.createSprite(1, 4)
