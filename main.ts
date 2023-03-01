@@ -10,7 +10,7 @@ function Aa () {
     pins.digitalWritePin(DigitalPin.P2, 0)
 }
 function _1 () {
-    pins.digitalWritePin(DigitalPin.P1, 0)
+    pins.digitalWritePin(DigitalPin.P3, 0)
     while (!(方塊.isTouching(b0) || (方塊.isTouching(b1) || 方塊.isTouching(b2)) || (方塊.isTouching(b3) || 方塊.isTouching(b4)))) {
         方塊.move(1)
         basic.pause(隨便)
@@ -31,7 +31,7 @@ function _1 () {
         b4.move(-1)
         _4y4.push(方塊)
     }
-    pins.digitalWritePin(DigitalPin.P1, 1)
+    pins.digitalWritePin(DigitalPin.P2, 1)
     basic.pause(1000)
 }
 function 得分2 () {
