@@ -1,8 +1,33 @@
 function Aa () {
-    pins.digitalWritePin(DigitalPin.P0, 1)
+    pins.digitalWritePin(DigitalPin.P2, 1)
     方塊 = game.createSprite(2, 0)
     方塊.turn(Direction.Right, 90)
-    pins.digitalWritePin(DigitalPin.P0, 0)
+    pins.digitalWritePin(DigitalPin.P2, 0)
+}
+function _1 () {
+    pins.digitalWritePin(DigitalPin.P1, 0)
+    while (!(方塊.isTouching(b0) || (方塊.isTouching(b1) || 方塊.isTouching(b2)) || (方塊.isTouching(b3) || 方塊.isTouching(b4)))) {
+        方塊.move(1)
+        basic.pause(隨便)
+    }
+    if (方塊.isTouching(b0)) {
+        b0.move(-1)
+        _0Y4.push(方塊)
+    } else if (方塊.isTouching(b1)) {
+        b1.move(-1)
+        _1y4.push(方塊)
+    } else if (方塊.isTouching(b2)) {
+        b2.move(-1)
+        _2y4.push(方塊)
+    } else if (方塊.isTouching(b3)) {
+        b3.move(-1)
+        _3y4.push(方塊)
+    } else if (方塊.isTouching(b4)) {
+        b4.move(-1)
+        _4y4.push(方塊)
+    }
+    pins.digitalWritePin(DigitalPin.P1, 1)
+    basic.pause(1000)
 }
 function 得分2 () {
     game.addScore(1)
@@ -68,36 +93,11 @@ function 得分4 () {
 }
 input.onGesture(Gesture.EightG, function () {
     game.pause()
-    pins.digitalWritePin(DigitalPin.P0, 1)
+    pins.digitalWritePin(DigitalPin.P2, 1)
     for (let index = 0; index < 1e+46; index++) {
         basic.showNumber(game.score())
     }
 })
-function _1 () {
-    pins.digitalWritePin(DigitalPin.P1, 0)
-    while (!(方塊.isTouching(b0) || (方塊.isTouching(b1) || 方塊.isTouching(b2)) || (方塊.isTouching(b3) || 方塊.isTouching(b4)))) {
-        方塊.move(1)
-        basic.pause(隨便)
-    }
-    if (方塊.isTouching(b0)) {
-        b0.move(-1)
-        _0Y4.push(方塊)
-    } else if (方塊.isTouching(b1)) {
-        b1.move(-1)
-        _1y4.push(方塊)
-    } else if (方塊.isTouching(b2)) {
-        b2.move(-1)
-        _2y4.push(方塊)
-    } else if (方塊.isTouching(b3)) {
-        b3.move(-1)
-        _3y4.push(方塊)
-    } else if (方塊.isTouching(b4)) {
-        b4.move(-1)
-        _4y4.push(方塊)
-    }
-    pins.digitalWritePin(DigitalPin.P1, 1)
-    basic.pause(1000)
-}
 let list = 0
 let _4y4: game.LedSprite[] = []
 let _3y4: game.LedSprite[] = []
@@ -111,6 +111,20 @@ let b3: game.LedSprite = null
 let b2: game.LedSprite = null
 let b1: game.LedSprite = null
 let b0: game.LedSprite = null
+basic.showLeds(`
+    . . # . .
+    # . # . #
+    # . # . #
+    # . . . #
+    . # # # .
+    `)
+basic.showLeds(`
+    . # # . .
+    . # . . .
+    . # . . .
+    # # . . .
+    # # . . .
+    `)
 Aa()
 b0 = game.createSprite(0, 4)
 b1 = game.createSprite(1, 4)
@@ -120,11 +134,16 @@ b4 = game.createSprite(4, 4)
 Light()
 Turn()
 隨便 = 1000
-pins.digitalWritePin(DigitalPin.P0, 1)
+pins.digitalWritePin(DigitalPin.P2, 1)
 basic.pause(1000)
-pins.digitalWritePin(DigitalPin.P0, 0)
+pins.digitalWritePin(DigitalPin.P2, 0)
 basic.forever(function () {
     _1()
     得分()
     Aa()
+})
+control.inBackground(function () {
+    music.playMelody("B F G A G F E - ", 120)
+    music.playMelody("E G B - A G F - ", 120)
+    music.playMelody("F A B C5 A F - F ", 120)
 })
