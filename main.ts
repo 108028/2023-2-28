@@ -168,9 +168,9 @@ control.inBackground(function () {
     無限 = 1
     for (let index = 0; index < 無限; index++) {
         無限 += 1
-        music.playMelody("A - E F G - F E ", 120)
-        music.playMelody("D - D F A - G F ", 120)
-        music.playMelody("E - E F G - A - ", 120)
-        music.playMelody("F - D - D - - - ", 120)
+        music.playMelody("A - E F G - F E ", 135)
+        music.playMelody("D - D F A - G F ", 135)
+        music.playMelody("E - E F G - A - ", 135)
+        music.playMelody("F - D - D - - - ", 135)
     }
 })
